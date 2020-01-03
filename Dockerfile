@@ -6,7 +6,7 @@ COPY go.mod .
 COPY go.sum .
 RUN go mod download
 
-COPY k8s/reputator .
+COPY . .
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 make build
 
 FROM alpine:latest
@@ -17,6 +17,5 @@ COPY --from=builder /app/bin .
 COPY --from=builder /app/resources ./resources/
 
 ENV PORT 8080
-ENV DEBUG 1
 
-CMD ["./reputator"]
+CMD ["./threatbite"]
