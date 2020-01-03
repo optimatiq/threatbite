@@ -109,8 +109,8 @@ The format of the data is straightforward, and each line contains one domain
 Threadbite open-source version provides public sources that are limited in scope and might be outdated with no SLA. 
 If you interested in curated and more accurate lists with SLA, please contact us at threatbite@optimatiq.com
 
-* `EMAIL_DISPOSAL_LIST`  - URL or set of URLs separated by space, which point to the IP/Net source of data
-* `EMAIL_FREE_LIST    `  - URL or set of URLs separated by space, which point to the IP/Net source of data
+* `EMAIL_DISPOSAL_LIST`  - URL or set of URLs separated by space, default: https://get.threatbite.com/public/disposal.txt
+* `EMAIL_FREE_LIST    `  - URL or set of URLs separated by space, default: https://get.threatbite.com/public/free.txt
 
 ### config.env file 
 You can store your custom configuration in config.env. The format is defined as below:
