@@ -1,0 +1,57 @@
+name: Release
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: Publish to github releases page
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Go
+        uses: actions/setup-go@v1
+        with:
+          go-version: 1.13
+
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        run: |
+          export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
+
+          VERSION=$(git describe --abbrev=0 --tags)
+          UNAME_SYS=$(uname -s)
+          UNAME_HW=$(uname -m)
+          TAR_THREATBITE=threatbite_${UNAME_SYS}_${UNAME_HW}.tar.gz
+          CHANGELOG=$(git log --oneline $(git describe --tags --abbrev=0 @^)..@)
+
+          make build
+          tar -cvzf ./bin/${TAR_THREATBITE} -C ./bin ./threatbite
+
+          go get github.com/tcnksm/ghr
+          ghr -t ${GITHUB_TOKEN} -b "${CHANGELOG}" -delete ${VERSION} ./bin/${TAR_THREATBITE}
+
+  registry:
+    name: Publish to docker hub
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Version tag
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: optimatiq/threatbite
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Latest tag
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          name: optimatiq/threatbite
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          tag_names: true

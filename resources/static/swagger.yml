@@ -1,0 +1,416 @@
+openapi: 3.0.0
+info:
+  description: Reputation API
+  version: "1.0.3"
+  title: Reputation API
+tags:
+  - name: client
+    description: Secured and authorized direct calls from client application
+  - name: score
+    description: Scoring call
+  - name: info
+    description: Information call
+paths:
+  /v1/stats/:
+    get:
+      tags:
+        - client
+        - info
+      summary: Information about account
+      description: Show detail information about token/account, statistics, expiration date
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Stats'
+        '400':
+          description: Invalid Input
+        '401':
+          description: Invalid ApiKey
+        '402':
+          description: Payment Required
+        '429':
+          description: Too Many Requests
+      security:
+        - headerKey: []
+  /v1/score/ip/{IP}:
+    get:
+      tags:
+        - client
+        - score
+      summary: Get informations about IP
+      description: Returns information about the scoring and suggested action based on the given IP address
+      parameters:
+        - in: path
+          name: IP
+          required: true
+          schema:
+            type: string
+            format: ipv4
+          description: IP address to test
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoreInfoIP'
+        '400':
+          description: Invalid Input
+        '401':
+          description: Invalid ApiKey
+        '402':
+          description: Payment Required
+        '429':
+          description: Too Many Requests
+      security:
+        - headerKey: []
+  /v1/score/request/:
+    post:
+      tags:
+        - client
+        - score
+      summary: Get informations about request
+      description: Returns information about the scoring and suggested action based on the given detail data
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GetScoreRequest'
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoreInfoRequest'
+        '400':
+          description: Invalid Input
+        '401':
+          description: Invalid ApiKey
+        '402':
+          description: Payment Required
+        '429':
+          description: Too Many Requests
+      security:
+        - headerKey: []
+  /v1/score/email/{EMAIL}:
+    get:
+      tags:
+        - client
+        - score
+      summary: Get informations about e-mail address
+      description: Returns information about e-mail address
+      parameters:
+        - in: path
+          name: EMAIL
+          required: true
+          schema:
+            type: string
+            format: email
+          description: Email address to test
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScoreInfoEmail'
+        '400':
+          description: Invalid Input
+        '401':
+          description: Invalid ApiKey
+        '402':
+          description: Payment Required
+        '429':
+          description: Too Many Requests
+      security:
+        - headerKey: []
+components:
+  schemas:
+    Stats:
+      type: object
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          example: demo
+          enum: [demo, payed, free]
+          description: Type of account
+        req1h:
+          type: number
+          example: 10
+          description: Number of API requests in last 1 hour
+        req12h:
+          type: number
+          example: 1200
+          description: Number of API requests in last 12 hours
+        req1d:
+          type: number
+          example: 2400
+          description: Number of API requests in last 1 day (24h)
+        req7d:
+          type: number
+          example: 16800
+          description: Number of API requests in last 7 days (168h)
+        req30d:
+          type: number
+          example: 72000
+          description: Number of API requests in last 30 days (720h)
+    ScoreInfoIP:
+      type: object
+      required:
+        - requestid
+        - scoring
+        - action
+      properties:
+        requestid:
+          type: string
+          example: 4c4712a4141d261ec0ca8f9037950685
+          description: Unique query ID.
+        scoring:
+          type: number
+          example: 51
+          minimum: 0
+          maximum: 100
+          description: Scoring information. Ihe higher the number, the greater the potential threat.
+        action:
+          type: string
+          example: captcha
+          enum: [accept, verify, block]
+          description: Suggested action that can be performed in relation to the verified source.
+        tor:
+          type: boolean
+          example: true
+          description: Source IP belongs to Tor network.
+        proxy:
+          type: boolean
+          example: true
+          description: Source IP is listed as proxy.
+        dc:
+          type: boolean
+          example: false
+          description: Source IP belongs datacenter.
+        vpn:
+          type: boolean
+          example: false
+          description: Source IP is listed as VPN.
+        spam:
+          type: boolean
+          example: false
+          description: Source IP is listed as spam source.
+        private:
+          type: boolean
+          example: false
+          description: Source IP belongs to private network.
+        bad:
+          type: boolean
+          example: false
+          description: Source IP has bad reputation.
+        se:
+          type: boolean
+          example: false
+          description: Source IP belongs to popular search engine (Google, Bing etc.).
+        bot:
+          type: boolean
+          example: false
+          description: Source IP is used by bot.
+        country:
+          type: string
+          example: US
+          description: Source IP country code.
+        company:
+          type: string
+          example: Optimatiq Sp. z o.o.
+          description: Name of network owner.
+    ScoreInfoRequest:
+      type: object
+      required:
+        - requestid
+        - scoring
+        - action
+      properties:
+        requestid:
+          type: string
+          example: 4c4712a4141d261ec0ca8f9037950685
+          description: Unique query ID.
+        scoring:
+          type: number
+          example: 51
+          minimum: 0
+          maximum: 100
+          description: Scoring information. Ihe higher the number, the greater the potential threat.
+        action:
+          type: string
+          example: captcha
+          enum: [accept, verify, block]
+          description: Suggested action that can be performed in relation to the verified source.
+        isTor:
+          type: boolean
+          example: true
+          description: Request source belongs to Tor network.
+        isProxy:
+          type: boolean
+          example: true
+          description: Request source is listed as proxy.
+        isDC:
+          type: boolean
+          example: false
+          description: Request source belongs datacenter.
+        isBadReputation:
+          type: boolean
+          example: false
+          description: Request source has bad reputation.
+        isSearchEngine:
+          type: boolean
+          example: false
+          description: Request source belongs to popular search engine (Google, Bing etc.).
+        isBot:
+          type: boolean
+          example: false
+          description: Request source is used by bot.
+        isMobile:
+          type: boolean
+          example: false
+          description: Request source is Mobile device.
+        Country:
+          type: string
+          example: US
+          description: Source IP country code.
+    ScoreInfoEmail:
+      type: object
+      required:
+        - requestid
+        - scoring
+        - isValid
+        - isPresent
+        - isFree
+        - isTemporary
+        - isCatchAll
+      properties:
+        requestid:
+          type: string
+          example: 4c4712a4141d261ec0ca8f9037950685
+          description: Unique query ID.
+        scoring:
+          type: number
+          example: 51
+          minimum: 0
+          maximum: 100
+          description: Scoring information. Ihe higher the number, the greater the potential threat.
+        valid:
+          type: boolean
+          example: true
+          description: E-mail string is valid
+        exists:
+          type: boolean
+          example: true
+          description: E-mail account exists on remote server.
+        free:
+          type: boolean
+          example: false
+          description: E-mail address belongs to free e-mail account provider.
+        disposal:
+          type: boolean
+          example: false
+          description: E-mail address belongs to disposable email provider.
+        catchall:
+          type: boolean
+          example: false
+          description: E-mail account is a part of CatchAll.
+        leaked:
+          type: boolean
+          example: false
+          description: E-mail account has been compromised in a data breach.
+        default:
+          type: boolean
+          example: false
+          description: E-mail account belongs to group of administrative accounts.
+    GetScoreIp:
+      type: object
+      required:
+        - ip
+      properties:
+        ip:
+          type: string
+          format: ipv4
+          example: 8.8.8.8
+          description: IPv4 addres of the verified source.
+    GetScoreEmail:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          example: mail@example.com
+          description: E-mail address to test
+    GetScoreRequest:
+      description: Informations about request that should be scored. Remember that any change in the order of headings or the size of characters may affect the result.
+      type: object
+      required:
+        - remote_ip
+        - request_domain
+        - request_uri
+        - request_method
+        - user_agent
+      properties:
+        remote_ip:
+          type: string
+          format: ipv4
+          example: 8.8.8.8
+          description: IPv4 addres of the verified source (required).
+        request_domain:
+          type: string
+          format: hostname
+          example: example.com
+          description: The domain that recieved HTTP query (required).
+        request_uri:
+          type: string
+          format: uri
+          example: /data?foo=bar
+          description: URI request with all arguments (required).
+        request_method:
+          type: string
+          example: GET
+          description: HTTP method
+        server_protocol:
+          type: string
+          example: HTTP/1.1
+          description: Full protocol name with version
+        request_scheme:
+          type: string
+          enum: [http, https]
+          example: https
+          description: Scheme of HTTP request.
+        remote_port:
+          type: integer
+          minimum: 0
+          maximum: 65535
+          example: 1357
+          description: Remote TCP port of HTTP request.
+        user_agent:
+          type: string
+          example: 'Mozilla/5.0 (iPad; U; CPU OS 3_2_1 like Mac OS X; en-us) AppleWebKit/531.21.10 (KHTML, like Gecko) Mobile/7B405'
+          description: Value of User-Agent header.
+        all_headers:
+          type: object
+          additionalProperties:
+            type: string
+          example: {
+            "X-Forwarded-For": "1.1.1.1",
+            "Host": "example.com",
+            "Content-Type": "text/html; charset=utf-8",
+          }
+          description: All HTTP headers send in request.
+  securitySchemes:
+    headerKey:
+      type: apiKey
+      in: header
+      name: X-Score-API-KEY

@@ -1,0 +1,44 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reputation</title>
+  <!-- needed for adaptive design -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Roboto:300,400,700" rel="stylesheet">
+
+  <!--
+  ReDoc doesn't change outer page styles
+  -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu-content img {
+      padding: 14px 21px 10px;
+    }
+
+    .api-info h1 {
+      padding-top: 40px;
+    }
+  </style>
+</head>
+<body>
+<div id="redoc_container">
+</div>
+<script src="https://cdn.jsdelivr.net/npm/redoc@next/bundles/redoc.standalone.js"> </script>
+<script>
+    Redoc.init('swagger.yml', {
+        theme: {
+            spacing: {
+                sectionVertical: 0
+            }
+        }
+    }, document.getElementById('redoc_container'));
+</script>
+</body>
+</html>

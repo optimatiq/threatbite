@@ -1,0 +1,26 @@
+# Binaries for programs and plugins
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+
+# Test binary, build with `go test -c`
+*.test
+
+# GoLand
+.idea/
+
+# vs-code
+.vscode/
+
+# vendor
+vendor/
+
+# local config file
+config_local.env
+
+# generated dynamically
+resources/maxmind/
