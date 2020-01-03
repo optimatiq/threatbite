@@ -23,7 +23,7 @@ require (
 	github.com/oschwald/geoip2-golang v1.3.0
 	github.com/oschwald/maxminddb-golang v1.5.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/prometheus/client_golang v1.1.0
+	github.com/prometheus/client_golang v1.3.0
 	github.com/prometheus/common v0.7.0
 	github.com/securego/gosec v0.0.0-20191008095658-28c1128b7336 // indirect
 	github.com/stretchr/testify v1.4.0
