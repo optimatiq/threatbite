@@ -13,7 +13,6 @@ type IPResult struct {
 	Action        string `json:"action"`
 	Company       string `json:"company"`
 	Country       string `json:"country"`
-	RequestID     string `json:"id"`
 	BadReputation bool   `json:"bad"`
 	Bot           bool   `json:"bot"`
 	Datacenter    bool   `json:"dc"`
@@ -77,7 +76,6 @@ func (i *IP) Check(addr string) (*IPResult, error) {
 		Company:      info.Company,
 		Tor:          info.IsTor,
 		Proxy:        info.IsProxy,
-		RequestID:    info.RequestID,
 		SearchEngine: info.IsSearchEngine,
 		Private:      info.IsPrivate,
 		Spam:         info.IsSpam,

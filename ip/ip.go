@@ -2,9 +2,7 @@ package ip
 
 import (
 	"context"
-	"math/rand" // #nosec
 	"net"
-	"strconv"
 	"time"
 
 	"github.com/optimatiq/threatbite/ip/datasource"
@@ -18,7 +16,6 @@ type Info struct {
 	Company        string
 	Country        string
 	Hostnames      []string
-	RequestID      string
 	IsProxy        bool
 	IsSearchEngine bool
 	IsTor          bool
@@ -162,12 +159,10 @@ func (i *IP) GetInfo(ip net.IP) (*Info, error) {
 		score = 100
 	}
 
-	// TODO(RW) the request_id is already generated at the middleware level it should be passed here
 	return &Info{
 		Company:        company,
 		Country:        country,
 		IsProxy:        isProxy,
-		RequestID:      "ID" + strconv.FormatInt(rand.Int63n(9223372036854775807), 10), // #nosec
 		IsSearchEngine: isSearch,
 		IsTor:          isTor,
 		Hostnames:      hostnames,
