@@ -1,6 +1,7 @@
 # IP Reputation tool
 
 ![GithubActions](https://github.com/optimatiq/threatbite/workflows/Check%20&%20test%20&%20build/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/optimatiq/threatbite)](https://goreportcard.com/report/github.com/optimatiq/threatbite)
 
 # About
 ThreatBite is a real-time service that detects unwanted web users. It takes into account IP addresses, e-mails or HTTP request headers.
