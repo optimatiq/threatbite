@@ -20,7 +20,7 @@ require (
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.4 // indirect
-	github.com/oschwald/geoip2-golang v1.3.0
+	github.com/oschwald/geoip2-golang v1.4.0
 	github.com/oschwald/maxminddb-golang v1.5.0 // indirect
 	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/prometheus/client_golang v1.3.0
