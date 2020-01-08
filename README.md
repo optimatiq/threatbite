@@ -90,9 +90,9 @@ License keys for these external services will improve the quality of the results
 * `PWNED_KEY`   - obtained from https://haveibeenpwned.com/
 * `MAXMIND_KEY` - obtained from https://www.maxmind.com/en/accounts/current/license-key   
 
-# TODO 
-* `SMTP_HELLO` - # TODO  
-* `SMTP_FROM`  - # TODO 
+Correct communication with the MTA server requires the following settings. Otherwise, the server may close the connection with the error: 
+* `SMTP_HELLO` - the domain name or IP address of the SMTP client that will be provided as an argument to the HELO command
+* `SMTP_FROM`  - MAIL FROM value passed to the SMTP server
 
 IP/CIDR lists contain information about addresses used as proxy/VPN or other malicious activity. 
 You can provide one or many sources separated by whitespace. 
