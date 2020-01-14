@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/github/v/tag/optimatiq/threatbite)
 
 # About
-ThreatBite is a real-time service that detects unwanted web users. It takes into account IP addresses, e-mails or HTTP request headers.
+ThreatBite is a global reputation system used internally by [optimatiq](https://optimatiq.com). It analyses incoming internet users and sends back a standardized score representing their trustworthiness. The program uses independent databases that collect up-to-date information about bad internet actors. Because it is an API service, it works in real-time, allowing you to act fast and block or keep an eye on suspicious user behavior.
 
 # Architecture
 ![Architecture](resources/static/threatbite_diagram.png)
