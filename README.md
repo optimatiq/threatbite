@@ -1,4 +1,4 @@
-# IP Reputation tool
+# ThreatBite - reputation checking tool
 
 ![GithubActions](https://github.com/optimatiq/threatbite/workflows/Check%20&%20test%20&%20build/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/optimatiq/threatbite)](https://goreportcard.com/report/github.com/optimatiq/threatbite)
