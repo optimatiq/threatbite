@@ -7,6 +7,9 @@
 # About
 ThreatBite is a real-time service that detects unwanted web users. It takes into account IP addresses, e-mails or HTTP request headers.
 
+# Architecture
+![Architecture](resources/static/threatbite_diagram.png)
+
 # Features
 
 ### Identifying the source of threat
