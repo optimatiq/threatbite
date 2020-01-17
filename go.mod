@@ -13,7 +13,7 @@ require (
 	github.com/go-playground/locales v0.12.1 // indirect
 	github.com/go-playground/universal-translator v0.16.0 // indirect
 	github.com/go-playground/validator v9.31.0+incompatible
-	github.com/hashicorp/golang-lru v0.5.3
+	github.com/hashicorp/golang-lru v0.5.4
 	github.com/jbenet/go-is-domain v1.0.3
 	github.com/joho/godotenv v1.3.0
 	github.com/labstack/echo/v4 v4.1.13
