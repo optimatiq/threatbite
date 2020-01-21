@@ -18,9 +18,6 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
 
-      - name: Check for secrets
-        uses: eshork/gitleaks-action@master
-
       - name: Lint Go Code
         run: |
           export PATH=$PATH:$(go env GOPATH)/bin # temporary fix. See https://github.com/actions/setup-go/issues/14
