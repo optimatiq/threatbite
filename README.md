@@ -5,7 +5,7 @@
 ![Version](https://img.shields.io/github/v/tag/optimatiq/threatbite)
 
 # About
-ThreatBite is a global reputation system used internally by [optimatiq](https://optimatiq.com). It analyses incoming internet users and sends back a standardized score representing their trustworthiness. The program uses independent databases that collect up-to-date information about bad internet actors. Because it is an API service, it works in real-time, allowing you to act fast and block or keep an eye on suspicious user behavior.
+ThreatBite is a global reputation system used internally by [Optimatiq](https://optimatiq.com). It analyses incoming internet users and sends back a standardized score representing their trustworthiness. The program uses independent databases that collect up-to-date information about bad internet actors. Because it is an API service, it works in real-time, allowing you to act fast and block or keep an eye on suspicious user behavior.
 
 # Architecture
 ![Architecture](resources/static/threatbite_diagram.png)
@@ -28,7 +28,12 @@ ThreatBite recognizes addresses belonging to the Tor network.
 ThreatBite detects addresses that are used as proxys or VPNs.
 
 ## Download
-- Grab the latest binary from the [releases](https://github.com/optimatiq/threatbite/releases) page and run it:
+- Grab the latest binary from the [releases](https://github.com/
+
+
+
+
+/threatbite/releases) page and run it:
 
 ```shell
 ./threatbite
