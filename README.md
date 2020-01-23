@@ -28,12 +28,7 @@ ThreatBite recognizes addresses belonging to the Tor network.
 ThreatBite detects addresses that are used as proxys or VPNs.
 
 ## Download
-- Grab the latest binary from the [releases](https://github.com/
-
-
-
-
-/threatbite/releases) page and run it:
+- Grab the latest binary from the [releases](https://github.com/optimatiq/threatbite/releases) page and run it:
 
 ```shell
 ./threatbite
