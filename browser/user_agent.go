@@ -9,7 +9,7 @@ import (
 	"github.com/labstack/gommon/log"
 )
 
-// BrowserNames for comparision
+// BrowserNames for comparison
 const (
 	BrowserUnknown = "Unknown"
 	BrowserChrome  = "Chrome"
