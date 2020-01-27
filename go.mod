@@ -16,7 +16,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/jbenet/go-is-domain v1.0.3
 	github.com/joho/godotenv v1.3.0
-	github.com/labstack/echo/v4 v4.1.13
+	github.com/labstack/echo/v4 v4.1.14
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/mattn/go-colorable v0.1.4 // indirect
