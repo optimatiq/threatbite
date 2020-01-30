@@ -87,6 +87,11 @@ func (g *maxmind) update() error {
 	log.Debug("[geoip] update start")
 	defer log.Debug("[geoip] update finished")
 
+	if g.license == "" {
+		log.Debug("[geoip] no license, skip update")
+		return nil
+	}
+
 	if err := os.MkdirAll(maxmindDir, 0750); err != nil {
 		return fmt.Errorf("cannot create directory %s , error: %w", maxmindDir, err)
 	}
