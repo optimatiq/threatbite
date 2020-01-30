@@ -44,7 +44,7 @@ docker run -d -p 8080:8080 optimatiq/threatbite
 ```shell
 git clone https://github.com/optimatiq/threatbite
 cd ./threatbite
-make bulid && ./bin/threatbite
+make build && ./bin/threatbite
 ```
 
 ## Quickstart
