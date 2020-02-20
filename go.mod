@@ -26,7 +26,7 @@ require (
 	github.com/prometheus/client_golang v1.4.1
 	github.com/prometheus/common v0.9.1
 	github.com/securego/gosec v0.0.0-20191008095658-28c1128b7336 // indirect
-	github.com/stretchr/testify v1.5.0
+	github.com/stretchr/testify v1.5.1
 	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
 	golang.org/x/lint v0.0.0-20190930215403-16217165b5de // indirect
 	golang.org/x/net v0.0.0-20190930134127-c5a3c61f89f3 // indirect
