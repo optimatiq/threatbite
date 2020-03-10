@@ -14,7 +14,6 @@ import (
 type Config struct {
 	Port              int
 	Debug             bool
-	Store             string
 	PwnedKey          string
 	MaxmindKey        string
 	SMTPHello         string
@@ -30,7 +29,7 @@ type Config struct {
 
 // NewConfig returns a new configuration struct or error.
 // Configuration is stored in the environment as the one of the tenets of a twelve-factor app.
-// config.env or config_local.env files are  allowed but are totally optional.
+// config.env or config_local.env files are allowed but are totally optional.
 // If config_local.env is present than it's used (only this file), otherwise config.env is checked
 // Envs take precedence of envs that are imported from config_local.env or config.env files
 func NewConfig(configFile string) (*Config, error) {

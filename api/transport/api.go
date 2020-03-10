@@ -7,6 +7,7 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/labstack/echo-contrib/prometheus"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
@@ -17,7 +18,6 @@ import (
 	emailDatasource "github.com/optimatiq/threatbite/email/datasource"
 	"github.com/optimatiq/threatbite/ip"
 	ipDatasource "github.com/optimatiq/threatbite/ip/datasource"
-	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"golang.org/x/crypto/acme/autocert"
 )
 
@@ -88,15 +88,16 @@ func (a *API) Run() {
 	a.echo.Use(middleware.BodyLimit("2M"))
 	a.echo.Use(middleware.RequestID())
 	a.echo.Use(middlewares.NewRatelimiter())
-	a.echo.Use(middlewares.NewPrometheus())
 
 	// Internal endpoints should be protected from public access
 	internal := a.echo.Group("/internal")
-	internal.GET("/metrics", echo.WrapHandler(promhttp.Handler()))
 	internal.GET("/health", a.handleHealth)
 	internal.GET("/debug/pprof/profile", echo.WrapHandler(http.HandlerFunc(pprof.Profile)))
 	internal.GET("/debug/pprof/heap", echo.WrapHandler(pprof.Handler("heap")))
 	internal.GET("/routes", a.handleRoutes)
+	p := prometheus.NewPrometheus("threatbite", nil)
+	p.MetricsPath = "/internal/metrics"
+	p.Use(a.echo)
 
 	// Public pages
 	a.echo.File("/", "resources/static/index.html")
