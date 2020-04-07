@@ -14,23 +14,18 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/jbenet/go-is-domain v1.0.3
 	github.com/joho/godotenv v1.3.0
-	github.com/labstack/echo-contrib v0.8.0
-	github.com/labstack/echo/v4 v4.1.15
+	github.com/labstack/echo-contrib v0.9.0
+	github.com/labstack/echo/v4 v4.1.16
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/oschwald/geoip2-golang v1.4.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	github.com/prometheus/client_golang v1.5.0
-	github.com/prometheus/client_golang v1.4.1 // indirect
+	github.com/prometheus/client_golang v1.5.0 // indirect
 	github.com/prometheus/common v0.9.1
-	github.com/securego/gosec v0.0.0-20191008095658-28c1128b7336 // indirect
 	github.com/stretchr/testify v1.5.1
-	golang.org/x/crypto v0.0.0-20191011191535-87dc89f01550
-	golang.org/x/lint v0.0.0-20190930215403-16217165b5de // indirect
-	golang.org/x/net v0.0.0-20190930134127-c5a3c61f89f3 // indirect
-	golang.org/x/sync v0.0.0-20190423024810-112230192c58
-	golang.org/x/sys v0.0.0-20191001151750-bb3f8db39f24 // indirect
-	golang.org/x/tools v0.0.0-20200103211127-7bda30096dc1 // indirect
+	golang.org/x/crypto v0.0.0-20200406173513-056763e48d71
+	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e // indirect
+	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
+	golang.org/x/sys v0.0.0-20200406155108-e3b113bbe6a4 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
-	gopkg.in/yaml.v2 v2.2.4 // indirect
 )
