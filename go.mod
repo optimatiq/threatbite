@@ -14,7 +14,7 @@ require (
 	github.com/hashicorp/golang-lru v0.5.4
 	github.com/jbenet/go-is-domain v1.0.3
 	github.com/joho/godotenv v1.3.0
-	github.com/labstack/echo-contrib v0.8.0
+	github.com/labstack/echo-contrib v0.9.0
 	github.com/labstack/echo/v4 v4.1.16
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.1.0 // indirect
@@ -27,4 +27,5 @@ require (
 	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e // indirect
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/sys v0.0.0-20200406155108-e3b113bbe6a4 // indirect
+	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
