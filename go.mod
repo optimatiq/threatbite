@@ -1,6 +1,6 @@
 module github.com/optimatiq/threatbite
 
-go 1.12
+go 1.13
 
 require (
 	github.com/BobuSumisu/aho-corasick v0.0.0-20190714010706-87defef828b4
