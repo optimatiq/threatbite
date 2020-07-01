@@ -182,7 +182,7 @@ func (suite *DatasourceSuite) createDir(content bool) string {
 				b.Write([]byte(suite.randomIPv4(true) + "\n"))
 				b.Write([]byte(suite.randomIPv6() + "\n"))
 			}
-			err = ioutil.WriteFile(tmpfn, b.Bytes(), 0666)
+			err = ioutil.WriteFile(tmpfn, b.Bytes(), 0600)
 			suite.NoError(err)
 		}
 	}
