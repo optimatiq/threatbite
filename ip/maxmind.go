@@ -155,8 +155,10 @@ func (g *maxmind) download(url string, md5Url string) error {
 				return fmt.Errorf("cannot create file %s, error: %w", target, err)
 			}
 
-			if _, err := io.Copy(f, tr); err != nil {
-				return fmt.Errorf("cannot copy to file %s, error: %w", target, err)
+			if _, err := io.CopyN(f, tr, int64(100_000_000)); err != nil {
+				if err != io.EOF {
+					return fmt.Errorf("cannot copy to file %s, error: %w", target, err)
+				}
 			}
 
 			if err := f.Close(); err != nil {
