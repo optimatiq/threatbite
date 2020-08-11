@@ -14,7 +14,7 @@ type DatasourceSuite struct {
 }
 
 func (suite *DatasourceSuite) SetupTest() {
-	suite.privateRand = rand.New(rand.NewSource(time.Now().UnixNano()))
+	suite.privateRand = rand.New(rand.NewSource(time.Now().UnixNano())) // #nosec G404
 }
 
 func (suite *DatasourceSuite) Test_NewURLDataSource() {

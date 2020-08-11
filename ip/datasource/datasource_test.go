@@ -21,6 +21,7 @@ type DatasourceSuite struct {
 	privateRand *rand.Rand
 }
 
+/* #nosec G404 */
 func (suite *DatasourceSuite) SetupTest() {
 	suite.privateRand = rand.New(rand.NewSource(time.Now().UnixNano()))
 }
@@ -182,7 +183,7 @@ func (suite *DatasourceSuite) createDir(content bool) string {
 				b.Write([]byte(suite.randomIPv4(true) + "\n"))
 				b.Write([]byte(suite.randomIPv6() + "\n"))
 			}
-			err = ioutil.WriteFile(tmpfn, b.Bytes(), 0666)
+			err = ioutil.WriteFile(tmpfn, b.Bytes(), 0666) // #nosec G306
 			suite.NoError(err)
 		}
 	}
