@@ -15,7 +15,7 @@ require (
 	github.com/jbenet/go-is-domain v1.0.3
 	github.com/joho/godotenv v1.3.0
 	github.com/labstack/echo-contrib v0.9.0
-	github.com/labstack/echo/v4 v4.1.16
+	github.com/labstack/echo/v4 v4.4.0
 	github.com/labstack/gommon v0.3.0
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/oschwald/geoip2-golang v1.4.0
@@ -23,9 +23,7 @@ require (
 	github.com/prometheus/client_golang v1.5.0 // indirect
 	github.com/prometheus/common v0.9.1
 	github.com/stretchr/testify v1.5.1
-	golang.org/x/crypto v0.0.0-20200406173513-056763e48d71
-	golang.org/x/net v0.0.0-20200324143707-d3edc9973b7e // indirect
+	golang.org/x/crypto v0.0.0-20210322153248-0c34fe9e7dc2
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
-	golang.org/x/sys v0.0.0-20200406155108-e3b113bbe6a4 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 )
